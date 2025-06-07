@@ -131,10 +131,10 @@ export default function ContactSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient">
-            Let's Connect
+            Let&apos;s Connect
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            I'm always open to discussing new opportunities, collaborations, 
+            I&apos;m always open to discussing new opportunities, collaborations, 
             or just having a conversation about technology and innovation.
           </p>
         </motion.div>

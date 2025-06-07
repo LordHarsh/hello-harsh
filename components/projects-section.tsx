@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, ExternalLink, Github, Zap, Database, Brain } from "lucide-react";
+import { ExternalLink, Github, Zap, Database, Brain } from "lucide-react";
 
 export default function ProjectsSection() {
   const projects = [
