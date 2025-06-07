@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone, Github, Linkedin, Globe } from "lucide-react";
+import { Mail, MapPin, Phone, Github, Linkedin, Globe, Download } from "lucide-react";
 
 export default function HeroSection() {
   return (
@@ -96,38 +96,84 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex justify-center gap-6"
+            className="flex flex-col sm:flex-row items-center gap-6"
           >
-            <motion.a
-              href="https://linkedin.com/in/harsh-banka"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="glass-hover p-3 rounded-xl group"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            {/* Social Links */}
+            <div className="flex justify-center gap-4">
+              <motion.a
+                href="https://linkedin.com/in/harsh-banka"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-hover p-3 rounded-xl group"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Linkedin className="w-6 h-6 text-blue-400 group-hover:text-blue-300 transition-colors" />
+              </motion.a>
+              <motion.a
+                href="https://github.com/LordHarsh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-hover p-3 rounded-xl group"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Github className="w-6 h-6 text-white group-hover:text-gray-300 transition-colors" />
+              </motion.a>
+              <motion.a
+                href="https://harshbanka.codes"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-hover p-3 rounded-xl group"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Globe className="w-6 h-6 text-cyan-400 group-hover:text-cyan-300 transition-colors" />
+              </motion.a>
+            </div>
+
+            {/* Resume Download Button */}
+            <motion.button
+              onClick={() => {
+                const link = document.createElement('a');
+                link.href = '/Harsh_Kumar_Banka_Resume.pdf';
+                link.download = 'Harsh_Kumar_Banka_Resume.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}
+              className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-xl flex items-center gap-3 font-semibold relative overflow-hidden group animate-glow"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1 }}
             >
-              <Linkedin className="w-6 h-6 text-blue-400 group-hover:text-blue-300 transition-colors" />
-            </motion.a>
-            <motion.a
-              href="https://github.com/LordHarsh"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="glass-hover p-3 rounded-xl group"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Github className="w-6 h-6 text-white group-hover:text-gray-300 transition-colors" />
-            </motion.a>
-            <motion.a
-              href="https://harshbanka.codes"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="glass-hover p-3 rounded-xl group"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Globe className="w-6 h-6 text-cyan-400 group-hover:text-cyan-300 transition-colors" />
-            </motion.a>
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-purple-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              />
+              <div className="relative z-10 flex items-center gap-3">
+                <motion.div
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <Download className="w-5 h-5" />
+                </motion.div>
+                Download Resume
+              </div>
+              
+              {/* Sparkle effect */}
+              <motion.div
+                className="absolute top-1 right-1"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.7, 1, 0.7]
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                <div className="w-2 h-2 bg-yellow-400 rounded-full" />
+              </motion.div>
+            </motion.button>
           </motion.div>
         </motion.div>
 

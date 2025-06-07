@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { GraduationCap, Calendar, MapPin } from "lucide-react";
+import ResumeDownload from "./resume-download";
 
 export default function AboutSection() {
   const containerVariants = {
@@ -66,7 +67,7 @@ export default function AboutSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid lg:grid-cols-2 gap-8"
+          className="grid lg:grid-cols-3 gap-8"
         >
           {/* Education Section */}
           <motion.div variants={itemVariants} className="space-y-6">
@@ -105,6 +106,17 @@ export default function AboutSection() {
                 </div>
               </div>
             </motion.div>
+          </motion.div>
+
+          {/* Resume Download Section */}
+          <motion.div variants={itemVariants} className="space-y-6">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">CV</span>
+              </div>
+              <h3 className="text-2xl font-bold text-gradient-blue">Resume</h3>
+            </div>
+            <ResumeDownload />
           </motion.div>
 
           {/* Skills Section */}

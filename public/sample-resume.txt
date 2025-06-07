@@ -1,0 +1,25 @@
+RESUME DOWNLOAD INSTRUCTIONS
+============================
+
+To complete the resume download feature, please add your actual PDF resume file to the public folder with the name:
+"Harsh_Kumar_Banka_Resume.pdf"
+
+The download functionality is already implemented and will work with any PDF file placed in the public folder with that exact filename.
+
+Features implemented:
+✅ Animated download button in hero section
+✅ Dedicated resume section with glassmorphism design
+✅ Floating resume button that appears on scroll
+✅ Download progress animations
+✅ Sparkle effects and hover animations
+✅ Preview functionality (opens PDF in new tab)
+
+The resume download feature includes:
+- Creative glassmorphism design
+- Smooth animations and transitions
+- Progress bars during download
+- Success states and feedback
+- Multiple download entry points
+- Responsive design for all devices
+
+Simply replace this text file with your actual PDF resume to activate the full functionality! 
