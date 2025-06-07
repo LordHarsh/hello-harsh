@@ -169,7 +169,7 @@ export default function FloatingResumeButton() {
 
                     <div className="flex justify-between text-xs text-muted-foreground pt-2">
                       <span>Format: PDF</span>
-                      <span>Size: 2.3 MB</span>
+                      <span>Size: 133 KB</span>
                     </div>
                   </div>
                 </motion.div>

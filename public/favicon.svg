@@ -1,0 +1,61 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Main gradient -->
+    <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Glow effect -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Inner glow -->
+    <linearGradient id="innerGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60A5FA;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#A78BFA;stop-opacity:0.8" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle with glass effect -->
+  <circle cx="32" cy="32" r="30" fill="url(#mainGradient)" filter="url(#glow)" opacity="0.95"/>
+  
+  <!-- Inner circle for depth -->
+  <circle cx="32" cy="32" r="26" fill="none" stroke="url(#innerGlow)" stroke-width="1" opacity="0.6"/>
+  
+  <!-- Letter H -->
+  <path d="M18 20 L18 44 M18 32 L26 32 M26 20 L26 44" 
+        stroke="white" 
+        stroke-width="3.5" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        fill="none"
+        opacity="0.95"/>
+  
+  <!-- Letter B -->
+  <path d="M35 20 L35 44 M35 20 L42 20 Q46 20 46 24 Q46 28 42 28 L35 28 M35 28 L43 28 Q47 28 47 36 Q47 44 43 44 L35 44" 
+        stroke="white" 
+        stroke-width="3.5" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        fill="none"
+        opacity="0.95"/>
+  
+  <!-- Subtle tech elements -->
+  <circle cx="15" cy="15" r="1.5" fill="white" opacity="0.4">
+    <animate attributeName="opacity" values="0.4;0.8;0.4" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <circle cx="49" cy="49" r="1.5" fill="white" opacity="0.4">
+    <animate attributeName="opacity" values="0.8;0.4;0.8" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Corner accent -->
+  <path d="M8 8 L12 8 L8 12 Z" fill="white" opacity="0.3"/>
+  <path d="M56 52 L56 56 L52 56 Z" fill="white" opacity="0.3"/>
+</svg>

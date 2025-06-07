@@ -225,7 +225,7 @@ export default function ResumeDownload() {
             className="mt-6 flex justify-between text-sm text-muted-foreground"
           >
             <span>Format: PDF</span>
-            <span>Size: 2.3 MB</span>
+            <span>Size: 133 KB</span>
             <span>Updated: May 2025</span>
           </motion.div>
         </div>

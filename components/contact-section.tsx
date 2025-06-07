@@ -103,39 +103,44 @@ export default function ContactSection() {
   const getColorClasses = (color: ContactColor) => {
     const colors = {
       blue: {
-        bg: "bg-blue-500/10",
-        border: "border-blue-400/30",
-        hover: "hover:bg-blue-500/20",
+        bg: "bg-gradient-to-br from-blue-500/20 to-cyan-500/15",
+        border: "border-blue-400/40",
+        hover: "hover:bg-gradient-to-br hover:from-blue-500/40 hover:to-cyan-500/35 hover:shadow-lg hover:shadow-blue-500/30 hover:border-blue-300/60",
         icon: "text-blue-400",
-        accent: "from-blue-500 to-cyan-500"
+        accent: "from-blue-500 to-cyan-500",
+        glow: "shadow-blue-500/20"
       },
       green: {
-        bg: "bg-green-500/10",
-        border: "border-green-400/30",
-        hover: "hover:bg-green-500/20",
+        bg: "bg-gradient-to-br from-green-500/20 to-emerald-500/15",
+        border: "border-green-400/40",
+        hover: "hover:bg-gradient-to-br hover:from-green-500/40 hover:to-emerald-500/35 hover:shadow-lg hover:shadow-green-500/30 hover:border-green-300/60",
         icon: "text-green-400",
-        accent: "from-green-500 to-emerald-500"
+        accent: "from-green-500 to-emerald-500",
+        glow: "shadow-green-500/20"
       },
       purple: {
-        bg: "bg-purple-500/10",
-        border: "border-purple-400/30",
-        hover: "hover:bg-purple-500/20",
+        bg: "bg-gradient-to-br from-purple-500/20 to-pink-500/15",
+        border: "border-purple-400/40",
+        hover: "hover:bg-gradient-to-br hover:from-purple-500/40 hover:to-pink-500/35 hover:shadow-lg hover:shadow-purple-500/30 hover:border-purple-300/60",
         icon: "text-purple-400",
-        accent: "from-purple-500 to-pink-500"
+        accent: "from-purple-500 to-pink-500",
+        glow: "shadow-purple-500/20"
       },
       white: {
-        bg: "bg-white/10",
-        border: "border-white/30",
-        hover: "hover:bg-white/20",
+        bg: "bg-gradient-to-br from-white/15 to-gray-200/10",
+        border: "border-white/40",
+        hover: "hover:bg-gradient-to-br hover:from-white/30 hover:to-gray-100/25 hover:shadow-lg hover:shadow-white/25 hover:border-white/60",
         icon: "text-white",
-        accent: "from-white to-gray-300"
+        accent: "from-white to-gray-300",
+        glow: "shadow-white/15"
       },
       cyan: {
-        bg: "bg-cyan-500/10",
-        border: "border-cyan-400/30",
-        hover: "hover:bg-cyan-500/20",
+        bg: "bg-gradient-to-br from-cyan-500/20 to-blue-500/15",
+        border: "border-cyan-400/40",
+        hover: "hover:bg-gradient-to-br hover:from-cyan-500/40 hover:to-blue-500/35 hover:shadow-lg hover:shadow-cyan-500/30 hover:border-cyan-300/60",
         icon: "text-cyan-400",
-        accent: "from-cyan-500 to-blue-500"
+        accent: "from-cyan-500 to-blue-500",
+        glow: "shadow-cyan-500/20"
       }
     };
     return colors[color];
@@ -187,7 +192,7 @@ export default function ContactSection() {
       ...inputs,
       _replyto: inputs.email,
       _subject: `New Portfolio Contact from ${inputs.name || 'Website Visitor'}`,
-      _autoresponse: "Thank you for your message! I'll get back to you within 24 hours.",
+      _autoresponse: "Thank you for your message! I\'ll get back to you within 24 hours.",
     };
 
     try {
@@ -287,20 +292,31 @@ export default function ContactSection() {
                     <motion.a
                       key={index}
                       href={method.href}
-                      className="glass-hover rounded-2xl p-6 flex items-center gap-4 group block"
-                      whileHover={{ scale: 1.02, x: 10 }}
-                      transition={{ duration: 0.2 }}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
+                      className={`glass-hover rounded-2xl p-6 flex items-center gap-4 group block transition-all duration-200 ${colors.glow} group`}
+                      initial={{ opacity: 0, y: 20, scale: 1, x: 0 }}
+                      whileInView={{ opacity: 1, y: 0, transition: { duration: 0.8 } }}
+                      whileHover="hover"
+                      variants={{
+                        rest: { scale: 1, x: 0 },
+                        hover: { scale: 1.02, x: 8 }
+                      }}
+                      transition={{ duration: 0.15, ease: "easeOut" }}
                       viewport={{ once: true }}
                       style={{ transitionDelay: `${index * 0.1}s` }}
                     >
-                      <div className={`p-3 rounded-xl ${colors.bg} ${colors.border} border group-hover:${colors.hover} transition-colors`}>
+                      <motion.div
+                        className={`p-4 rounded-xl ${colors.bg} ${colors.border} border-2 ${colors.hover}`}
+                        variants={{
+                          rest: { rotate: 0, scale: 1 },
+                          hover: { rotate: 5, scale: 1.1 }
+                        }}
+                        transition={{ duration: 0.15, ease: "easeOut" }}
+                      >
                         <IconComponent className={`w-6 h-6 ${colors.icon}`} />
-                      </div>
+                      </motion.div>
                       <div>
-                        <p className="font-semibold text-white mb-1">{method.label}</p>
-                        <p className="text-muted-foreground group-hover:text-white transition-colors">
+                        <p className="font-semibold text-white mb-1 group-hover:text-gradient transition-all duration-150">{method.label}</p>
+                        <p className="text-muted-foreground group-hover:text-white transition-colors duration-150">
                           {method.value}
                         </p>
                       </div>
@@ -349,7 +365,7 @@ export default function ContactSection() {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.2 }}
             viewport={{ once: true }}
             className="glass rounded-3xl p-8"
           >
@@ -360,10 +376,10 @@ export default function ContactSection() {
 
             <form onSubmit={handleOnSubmit} className="space-y-6">
               {/* Honeypot field for spam protection */}
-              <input 
-                type="text" 
-                name="_gotcha" 
-                style={{ display: 'none' }} 
+              <input
+                type="text"
+                name="_gotcha"
+                style={{ display: 'none' }}
                 tabIndex={-1}
                 autoComplete="off"
               />
@@ -371,7 +387,7 @@ export default function ContactSection() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
+                transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
               >
                 <label className="block text-sm font-medium text-white mb-2">
@@ -434,13 +450,13 @@ export default function ContactSection() {
                 className={`w-full font-semibold py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 group relative overflow-hidden ${status.submitting
                   ? 'bg-gray-500 cursor-not-allowed'
                   : status.submitted
-                    ? 'bg-green-500 hover:bg-green-600'
-                    : 'bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600'
+                    ? 'bg-gradient-to-r from-blue-500 to-purple-500 animate-glow'
+                    : 'bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 animate-glow'
                   } text-white`}
                 whileHover={!status.submitting && !status.submitted ? {
-                  scale: 1.02,
+                  scale: 1.05,
                   y: -2,
-                  boxShadow: "0 20px 40px rgba(59, 130, 246, 0.4)"
+                  boxShadow: "0 20px 40px rgba(139, 69, 19, 0.4)"
                 } : {}}
                 whileTap={!status.submitting && !status.submitted ? { scale: 0.98 } : {}}
                 initial={{ opacity: 0, y: 20 }}
@@ -451,7 +467,7 @@ export default function ContactSection() {
                 {/* Button background animation */}
                 {!status.submitting && !status.submitted && (
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     initial={false}
                   />
                 )}
@@ -523,7 +539,7 @@ export default function ContactSection() {
             }}
             className="fixed top-8 right-8 z-50 max-w-md"
           >
-            <div className="glass-hover rounded-2xl p-6 border border-green-400/30 bg-green-500/10 backdrop-blur-lg shadow-2xl">
+            <div className="glass-hover rounded-2xl p-6 border border-blue-400/30 bg-blue-500/10 backdrop-blur-lg shadow-2xl">
               <div className="flex items-start gap-4">
                 <motion.div
                   initial={{ scale: 0 }}
@@ -531,7 +547,7 @@ export default function ContactSection() {
                   transition={{ delay: 0.2, type: "spring", stiffness: 300 }}
                   className="flex-shrink-0"
                 >
-                  <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
                     <CheckCircle className="w-6 h-6 text-white" />
                   </div>
                 </motion.div>
@@ -548,7 +564,7 @@ export default function ContactSection() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="text-sm text-green-300"
+                    className="text-sm text-blue-300"
                   >
                     {status.info.msg}
                   </motion.p>
@@ -562,7 +578,7 @@ export default function ContactSection() {
                     submitted: false,
                     info: { error: false, msg: null }
                   }))}
-                  className="flex-shrink-0 p-1 rounded-lg hover:bg-white/10 transition-colors text-green-300 hover:text-white"
+                  className="flex-shrink-0 p-1 rounded-lg hover:bg-white/10 transition-colors text-blue-300 hover:text-white"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -587,7 +603,7 @@ export default function ContactSection() {
                       delay: 0.5 + i * 0.1,
                       ease: "easeOut"
                     }}
-                    className="absolute top-1/2 left-1/2 w-2 h-2 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full"
+                    className="absolute top-1/2 left-1/2 w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"
                   />
                 ))}
               </div>
