@@ -11,7 +11,7 @@ export default function ProjectsSection() {
       longDescription: "Developed full-stack web application with React and FastAPI to enable interactive geospatial data exploration of automated news insights.",
       technologies: ["PyTorch", "Next.js", "Appwrite", "NLP", "OCR", "FastAPI"],
       github: "https://github.com/LordHarsh/news-bug",
-      demo: "#",
+      demo: "",
       icon: Brain,
       color: "blue",
       featured: true
@@ -22,7 +22,7 @@ export default function ProjectsSection() {
       longDescription: "Used pre-trained model from TF Hub based on Fast Style Transfer algorithm by Gatys et al. in 2016 for real-time video processing.",
       technologies: ["Python", "TensorFlow", "Computer Vision", "Deep Learning"],
       github: "https://github.com/LordHarsh/Neural-Style-Transfer",
-      demo: "#",
+      demo: "",
       icon: Zap,
       color: "purple",
       featured: true
@@ -33,7 +33,7 @@ export default function ProjectsSection() {
       longDescription: "Integrated LLM for controlling devices through natural conversation and implemented facial recognition tool to automate devices based on user preferences.",
       technologies: ["TypeScript", "Node.js", "Express", "MongoDB", "LLM", "Computer Vision"],
       github: "https://github.com/LordHarsh/armando-iot-backend",
-      demo: "#",
+      demo: "",
       icon: Database,
       color: "green",
       featured: false
@@ -109,7 +109,7 @@ export default function ProjectsSection() {
             Featured Projects
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            A showcase of my technical projects spanning AI/ML, full-stack development, 
+            A showcase of my technical projects spanning AI/ML, full-stack development,
             and innovative solutions that demonstrate my expertise and passion for technology.
           </p>
         </motion.div>
@@ -120,14 +120,14 @@ export default function ProjectsSection() {
             {projects.filter(project => project.featured).map((project, index) => {
               const colors = getColorClasses(project.color);
               const IconComponent = project.icon;
-              
+
               return (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ 
-                    duration: 0.6, 
+                  transition={{
+                    duration: 0.6,
                     delay: index * 0.2,
                     ease: "easeOut"
                   }}
@@ -136,8 +136,8 @@ export default function ProjectsSection() {
                 >
                   <motion.div
                     className="glass-hover rounded-3xl p-8 h-full flex flex-col"
-                    whileHover={{ 
-                      scale: 1.02, 
+                    whileHover={{
+                      scale: 1.02,
                       y: -8,
                       rotateY: 5,
                     }}
@@ -148,7 +148,7 @@ export default function ProjectsSection() {
                         <IconComponent className={`w-8 h-8 ${colors.icon}`} />
                       </div>
                       <div className="flex gap-3">
-                        <motion.a
+                        {project.github && <motion.a
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -157,8 +157,8 @@ export default function ProjectsSection() {
                           whileTap={{ scale: 0.9 }}
                         >
                           <Github className="w-5 h-5 text-white" />
-                        </motion.a>
-                        <motion.a
+                        </motion.a>}
+                        {project.demo && <motion.a
                           href={project.demo}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -167,7 +167,7 @@ export default function ProjectsSection() {
                           whileTap={{ scale: 0.9 }}
                         >
                           <ExternalLink className="w-5 h-5 text-white" />
-                        </motion.a>
+                        </motion.a>}
                       </div>
                     </div>
 
@@ -196,7 +196,7 @@ export default function ProjectsSection() {
                     </div>
 
                     {/* Animated border gradient */}
-                    <div className={`absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r ${colors.accent} p-[1px]`}>
+                    <div className={`absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 -z-[100] transition-opacity duration-300 bg-gradient-to-r ${colors.accent} p-[1px]`}>
                       <div className="w-full h-full rounded-3xl bg-background/95" />
                     </div>
                   </motion.div>
@@ -210,14 +210,14 @@ export default function ProjectsSection() {
             {projects.filter(project => !project.featured).map((project, index) => {
               const colors = getColorClasses(project.color);
               const IconComponent = project.icon;
-              
+
               return (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: -50 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ 
-                    duration: 0.6, 
+                  transition={{
+                    duration: 0.6,
                     delay: index * 0.1,
                     ease: "easeOut"
                   }}
@@ -229,7 +229,7 @@ export default function ProjectsSection() {
                     whileHover={{ scale: 1.01, y: -2 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <div className={`p-4 rounded-xl ${colors.bg} ${colors.border} border group-hover:${colors.hover} transition-colors flex-shrink-0`}>
+                    <div className={`p-4 rounded-2xl ${colors.bg} ${colors.border} border group-hover:${colors.hover} transition-colors w-fit`}>
                       <IconComponent className={`w-8 h-8 ${colors.icon}`} />
                     </div>
 
@@ -246,9 +246,9 @@ export default function ProjectsSection() {
                             {project.longDescription}
                           </p>
                         </div>
-                        
+
                         <div className="flex gap-3 mt-4 md:mt-0 flex-shrink-0">
-                          <motion.a
+                          {project.github && <motion.a
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -257,8 +257,8 @@ export default function ProjectsSection() {
                             whileTap={{ scale: 0.9 }}
                           >
                             <Github className="w-4 h-4 text-white" />
-                          </motion.a>
-                          <motion.a
+                          </motion.a>}
+                          {project.demo && <motion.a
                             href={project.demo}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -267,7 +267,7 @@ export default function ProjectsSection() {
                             whileTap={{ scale: 0.9 }}
                           >
                             <ExternalLink className="w-4 h-4 text-white" />
-                          </motion.a>
+                          </motion.a>}
                         </div>
                       </div>
 

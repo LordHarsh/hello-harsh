@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Github, Linkedin,  Send, MessageCircle, CheckCircle, AlertCircle, LucideIcon } from "lucide-react";
+import { Mail, Phone, MapPin, Github, Linkedin, Send, MessageCircle, CheckCircle, AlertCircle, LucideIcon } from "lucide-react";
 
 type ContactColor = 'blue' | 'green' | 'purple' | 'white' | 'cyan';
 
@@ -21,19 +21,27 @@ interface SocialLink {
   color: ContactColor;
 }
 
+interface FormInputs {
+  name: string;
+  email: string;
+  message: string;
+}
+
+interface FormStatus {
+  submitted: boolean;
+  submitting: boolean;
+  info: { error: boolean; msg: string | null };
+}
+
 export default function ContactSection() {
   // Form state management
-  const [status, setStatus] = useState<{
-    submitted: boolean;
-    submitting: boolean;
-    info: { error: boolean; msg: string | null };
-  }>({
+  const [status, setStatus] = useState<FormStatus>({
     submitted: false,
     submitting: false,
     info: { error: false, msg: null },
   });
 
-  const [inputs, setInputs] = useState({
+  const [inputs, setInputs] = useState<FormInputs>({
     name: '',
     email: '',
     message: '',
@@ -156,21 +164,31 @@ export default function ContactSection() {
   };
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    e.persist();
+    const { name, value } = e.target;
     setInputs((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value,
+      [name]: value,
     }));
-    setStatus({
-      submitted: false,
-      submitting: false,
-      info: { error: false, msg: null },
-    });
+    // Clear any existing error messages when user starts typing
+    if (status.info.error) {
+      setStatus(prev => ({
+        ...prev,
+        info: { error: false, msg: null },
+      }));
+    }
   };
 
-  const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus((prevStatus) => ({ ...prevStatus, submitting: true }));
+
+    // Prepare form data including Formspree special fields
+    const formData = {
+      ...inputs,
+      _replyto: inputs.email,
+      _subject: `New Portfolio Contact from ${inputs.name || 'Website Visitor'}`,
+      _autoresponse: "Thank you for your message! I'll get back to you within 24 hours.",
+    };
 
     try {
       const response = await fetch('https://formspree.io/f/mzzgdooy', {
@@ -178,7 +196,7 @@ export default function ContactSection() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(inputs),
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
@@ -187,9 +205,12 @@ export default function ContactSection() {
           'I\'ll get back to you soon! Thanks for reaching out.',
         );
       } else {
-        handleServerResponse(false, 'Oops! There was a problem submitting your form. Please try again.');
+        const errorData = await response.json().catch(() => ({}));
+        const errorMessage = errorData.errors?.[0]?.message || 'There was a problem submitting your form. Please try again.';
+        handleServerResponse(false, errorMessage);
       }
-    } catch {
+    } catch (error) {
+      console.error('Form submission error:', error);
       handleServerResponse(false, 'Network error. Please check your connection and try again.');
     }
   };
@@ -338,6 +359,15 @@ export default function ContactSection() {
             </div>
 
             <form onSubmit={handleOnSubmit} className="space-y-6">
+              {/* Honeypot field for spam protection */}
+              <input 
+                type="text" 
+                name="_gotcha" 
+                style={{ display: 'none' }} 
+                tabIndex={-1}
+                autoComplete="off"
+              />
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -402,10 +432,10 @@ export default function ContactSection() {
                 type="submit"
                 disabled={status.submitting || status.submitted}
                 className={`w-full font-semibold py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 group relative overflow-hidden ${status.submitting
-                    ? 'bg-gray-500 cursor-not-allowed'
-                    : status.submitted
-                      ? 'bg-green-500 hover:bg-green-600'
-                      : 'bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600'
+                  ? 'bg-gray-500 cursor-not-allowed'
+                  : status.submitted
+                    ? 'bg-green-500 hover:bg-green-600'
+                    : 'bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600'
                   } text-white`}
                 whileHover={!status.submitting && !status.submitted ? {
                   scale: 1.02,
@@ -575,10 +605,12 @@ export default function ContactSection() {
         >
           <div className="glass rounded-2xl p-6">
             <p className="text-muted-foreground">
-              © {new Date().getFullYear()} Harsh Kumar Banka. Built with{" "}
-              <span className="text-gradient">Next.js</span>,{" "}
-              <span className="text-gradient">TypeScript</span>, and{" "}
-              <span className="text-gradient">Tailwind CSS</span>.
+              © {new Date().getFullYear()} <span className="text-gradient">
+                Harsh Kumar Banka
+              </span>
+              . Built with{" "}
+              <span className="">☕</span> and{" "}
+              <span className="">🧑‍💻</span>.
             </p>
           </div>
         </motion.div>
