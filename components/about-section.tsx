@@ -82,30 +82,31 @@ export default function About() {
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <h4 className="text-xl font-bold text-white mb-2">
+                <div className="flex items-start justify-between my-4 ">
+                  <div className="">
+                    <h4 className="text-xl font-bold text-white mb-4">
                       Bachelor of Technology in Computer Science and Engineering
                     </h4>
-                    <p className="text-blue-400 font-semibold mb-2">
+                    <p className="text-blue-400 font-semibold mb-4">
                       SRM Institute of Science and Technology
                     </p>
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                      <div className="flex items-center gap-1">
-                        <Calendar className="w-4 h-4" />
-                        Sep 2022 – May 2026
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <MapPin className="w-4 h-4" />
-                        Chennai, India
-                      </div>
-                    </div>
+
                   </div>
                   <div className="glass rounded-xl p-3 text-center">
                     <div className="text-2xl font-bold text-gradient-blue">8.8</div>
                     <div className="text-xs text-muted-foreground">CGPA</div>
                   </div>
                 </div>
+                  <div className="flex items-stretch gap-4 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-1">
+                      <Calendar className="w-4 h-4" />
+                      Sep 2022 – May 2026
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <MapPin className="w-4 h-4" />
+                      Chennai, India
+                    </div>
+                  </div>
               </motion.div>
             </div>
           </motion.div>

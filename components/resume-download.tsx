@@ -218,7 +218,7 @@ export default function ResumeDownload() {
           </div>
 
           {/* Stats */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2 }}
@@ -227,7 +227,7 @@ export default function ResumeDownload() {
             <span>Format: PDF</span>
             <span>Size: 133 KB</span>
             <span>Updated: May 2025</span>
-          </motion.div>
+          </motion.div> */}
         </div>
 
         {/* Decorative elements */}
