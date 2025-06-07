@@ -22,7 +22,7 @@ export default function FloatingResumeButton() {
 
   const handleDownload = () => {
     setIsDownloading(true);
-    
+
     setTimeout(() => {
       const link = document.createElement('a');
       link.href = '/Harsh_Kumar_Banka_Resume.pdf';
@@ -30,7 +30,7 @@ export default function FloatingResumeButton() {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      
+
       setIsDownloading(false);
       setIsExpanded(false);
     }, 1000);
@@ -68,7 +68,7 @@ export default function FloatingResumeButton() {
                 }}
                 transition={{ duration: 3, repeat: Infinity }}
               />
-              
+
               {/* Icon */}
               <motion.div
                 animate={isExpanded ? { rotate: 45 } : { rotate: 0 }}
@@ -128,9 +128,9 @@ export default function FloatingResumeButton() {
                   initial={{ opacity: 0, scale: 0, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0, y: 20 }}
-                  className="absolute bottom-20 right-0 glass rounded-2xl p-4 min-w-[280px]"
+                  className="absolute bottom-20 right-0 glass rounded-2xl p-4 min-w-[280px] bg-white/15 backdrop-blur-md"
                 >
-                  <div className="text-white mb-4">
+                  <div className="text-white mb-4 ">
                     <h3 className="font-bold text-lg mb-1">Download Resume</h3>
                     <p className="text-sm text-muted-foreground">
                       Get my latest professional resume
@@ -177,20 +177,20 @@ export default function FloatingResumeButton() {
             </AnimatePresence>
 
             {/* Tooltip */}
-            <AnimatePresence>
+            {/* <AnimatePresence>
               {!isExpanded && (
                 <motion.div
-                  initial={{ opacity: 0, x: 20, scale: 0.8 }}
-                  animate={{ opacity: 1, x: 0, scale: 1 }}
-                  exit={{ opacity: 0, x: 20, scale: 0.8 }}
-                  className="absolute right-20 top-1/2 -translate-y-1/2 bg-black/80 text-white text-sm px-3 py-2 rounded-lg whitespace-nowrap pointer-events-none"
-                  transition={{ delay: 1 }}
+                initial={{ opacity: 0, x: 20, scale: 0.8 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                exit={{ opacity: 0, x: 20, scale: 0.8 }}
+                className="absolute right-20 top-1/2 -translate-y-1/2 bg-black/80 text-white text-sm px-3 py-2 rounded-lg whitespace-nowrap pointer-events-none"
+                transition={{ delay: 1 }}
                 >
                   Download Resume
                   <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1 w-2 h-2 bg-black/80 rotate-45" />
                 </motion.div>
               )}
-            </AnimatePresence>
+            </AnimatePresence> */}
           </motion.div>
         </motion.div>
       )}

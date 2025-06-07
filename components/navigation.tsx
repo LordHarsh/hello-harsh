@@ -37,11 +37,11 @@ export default function Navigation() {
     <motion.nav
       variants={{
         visible: { y: 0 },
-        hidden: { y: "-100%" },
+        hidden: { y: "-130%" },
       }}
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.35, ease: "easeInOut" }}
-      className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50"
+      className="fixed top-6 left-0 right-0 mx-auto z-50 w-fit"
     >
       <motion.div
         initial={{ opacity: 0, y: -50 }}

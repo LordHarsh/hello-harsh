@@ -255,7 +255,7 @@ export default function AchievementsSection() {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-          <div className="glass rounded-2xl p-8 max-w-2xl mx-auto">
+          {/* <div className="glass rounded-2xl p-8 max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold text-gradient mb-4">
               Competition Success Rate
             </h3>
@@ -275,7 +275,7 @@ export default function AchievementsSection() {
                 <div className="text-sm text-muted-foreground">Average Position</div>
               </div>
             </div>
-          </div>
+          </div> */}
         </motion.div>
       </div>
     </section>

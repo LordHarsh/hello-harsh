@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone, Github, Linkedin, Globe, Download } from "lucide-react";
+import { Mail, MapPin, Phone, Github, Linkedin,  Download } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-4">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 mt-12 md:mt-0">
       {/* Background floating elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -96,7 +96,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-col sm:flex-row items-center gap-6"
+            className="flex flex-col sm:flex-row items-center gap-6 justify-center"
           >
             {/* Social Links */}
             <div className="flex justify-center gap-4">
@@ -120,7 +120,7 @@ export default function HeroSection() {
               >
                 <Github className="w-6 h-6 text-white group-hover:text-gray-300 transition-colors" />
               </motion.a>
-              <motion.a
+              {/* <motion.a
                 href="https://harshbanka.codes"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -129,7 +129,7 @@ export default function HeroSection() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Globe className="w-6 h-6 text-cyan-400 group-hover:text-cyan-300 transition-colors" />
-              </motion.a>
+              </motion.a> */}
             </div>
 
             {/* Resume Download Button */}

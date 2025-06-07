@@ -226,7 +226,7 @@ export default function ResumeDownload() {
           >
             <span>Format: PDF</span>
             <span>Size: 2.3 MB</span>
-            <span>Updated: Dec 2024</span>
+            <span>Updated: May 2025</span>
           </motion.div>
         </div>
 

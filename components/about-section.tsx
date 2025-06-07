@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { GraduationCap, Calendar, MapPin } from "lucide-react";
 import ResumeDownload from "./resume-download";
 
-export default function AboutSection() {
+export default function About() {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -56,8 +56,8 @@ export default function AboutSection() {
             About Me
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Passionate AI/ML Engineer and Full Stack Developer with expertise in building 
-            intelligent systems and scalable web applications. Currently pursuing Computer 
+            Passionate AI/ML Engineer and Full Stack Developer with expertise in building
+            intelligent systems and scalable web applications. Currently pursuing Computer
             Science Engineering with a focus on cutting-edge technologies.
           </p>
         </motion.div>
@@ -67,123 +67,63 @@ export default function AboutSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid lg:grid-cols-3 gap-8"
+          className="grid lg:grid-cols-2 gap-8 lg:items-stretch"
         >
           {/* Education Section */}
-          <motion.div variants={itemVariants} className="space-y-6">
+          <motion.div variants={itemVariants} className="flex flex-col">
             <div className="flex items-center gap-3 mb-8">
               <GraduationCap className="w-8 h-8 text-blue-400" />
               <h3 className="text-2xl font-bold text-gradient-blue">Education</h3>
             </div>
 
-            <motion.div
-              className="glass-hover rounded-2xl p-6 group"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h4 className="text-xl font-bold text-white mb-2">
-                    Bachelor of Technology in Computer Science and Engineering
-                  </h4>
-                  <p className="text-blue-400 font-semibold mb-2">
-                    SRM Institute of Science and Technology
-                  </p>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="w-4 h-4" />
-                      Sep 2022 – May 2026
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <MapPin className="w-4 h-4" />
-                      Chennai, India
+            <div className="flex-1 space-y-6">
+              <motion.div
+                className="glass-hover rounded-2xl p-6 group"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 className="text-xl font-bold text-white mb-2">
+                      Bachelor of Technology in Computer Science and Engineering
+                    </h4>
+                    <p className="text-blue-400 font-semibold mb-2">
+                      SRM Institute of Science and Technology
+                    </p>
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-1">
+                        <Calendar className="w-4 h-4" />
+                        Sep 2022 – May 2026
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <MapPin className="w-4 h-4" />
+                        Chennai, India
+                      </div>
                     </div>
                   </div>
+                  <div className="glass rounded-xl p-3 text-center">
+                    <div className="text-2xl font-bold text-gradient-blue">8.8</div>
+                    <div className="text-xs text-muted-foreground">CGPA</div>
+                  </div>
                 </div>
-                <div className="glass rounded-xl p-3 text-center">
-                  <div className="text-2xl font-bold text-gradient-blue">8.8</div>
-                  <div className="text-xs text-muted-foreground">CGPA</div>
-                </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </motion.div>
 
           {/* Resume Download Section */}
-          <motion.div variants={itemVariants} className="space-y-6">
+          <motion.div variants={itemVariants} className="flex flex-col">
             <div className="flex items-center gap-3 mb-8">
               <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">CV</span>
               </div>
               <h3 className="text-2xl font-bold text-gradient-blue">Resume</h3>
             </div>
-            <ResumeDownload />
-          </motion.div>
-
-          {/* Skills Section */}
-          <motion.div variants={itemVariants} className="space-y-6">
-            <h3 className="text-2xl font-bold text-gradient-blue mb-8">Technical Skills</h3>
-            
-            <div className="space-y-6">
-              <motion.div
-                className="glass-hover rounded-2xl p-6"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              >
-                <h4 className="text-lg font-semibold text-white mb-4">Languages</h4>
-                <div className="flex flex-wrap gap-2">
-                  {["Python", "JavaScript", "TypeScript", "Java", "C/C++", "HTML/CSS", "MATLAB"].map((skill) => (
-                    <motion.span
-                      key={skill}
-                      className="px-3 py-1 bg-white/10 rounded-full text-sm border border-white/20 hover:bg-white/20 transition-colors"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      {skill}
-                    </motion.span>
-                  ))}
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="glass-hover rounded-2xl p-6"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              >
-                <h4 className="text-lg font-semibold text-white mb-4">AI/ML & Data Science</h4>
-                <div className="flex flex-wrap gap-2">
-                  {["TensorFlow", "MLFlow", "ZenML", "Numpy", "Pandas", "Data Analysis", "Model Development", "MLOPs"].map((skill) => (
-                    <motion.span
-                      key={skill}
-                      className="px-3 py-1 bg-blue-500/20 rounded-full text-sm border border-blue-400/30 hover:bg-blue-500/30 transition-colors"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      {skill}
-                    </motion.span>
-                  ))}
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="glass-hover rounded-2xl p-6"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              >
-                <h4 className="text-lg font-semibold text-white mb-4">Software Development</h4>
-                <div className="flex flex-wrap gap-2">
-                  {["NodeJs", "Express", "React", "NextJs", "SpringBoot", "FastAPI", "Flask", "Django", "MongoDB", "SQL", "Redis", "Docker", "AWS", "Azure"].map((skill) => (
-                    <motion.span
-                      key={skill}
-                      className="px-3 py-1 bg-purple-500/20 rounded-full text-sm border border-purple-400/30 hover:bg-purple-500/30 transition-colors"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      {skill}
-                    </motion.span>
-                  ))}
-                </div>
-              </motion.div>
+            <div className="flex-1">
+              <ResumeDownload />
             </div>
           </motion.div>
         </motion.div>
       </div>
     </section>
   );
-} 
+}
