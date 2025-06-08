@@ -8,9 +8,9 @@ export default function ExperienceSection() {
     {
       title: "AI/ML Engineer",
       company: "EmendoAI",
-      location: "Hyderabad, India",
+      location: "California, USA",
       period: "Oct. 2024 – Present",
-      type: "Full-time",
+      type: "Fulltime - Intern",
       description: [
         "Developed a multifunctional AI agent using chain-of-thought methodology, enabling dynamic interaction across cloud services for comprehensive querying, decision-making, and automated task execution.",
         "Optimized serverless architecture using AWS Lambda, RDS Aurora, and Langsmith, reducing system latency by 80% and implementing an automated GitHub Actions evaluation engine for continuous performance tracking."

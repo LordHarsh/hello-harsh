@@ -43,7 +43,7 @@ const QUICK_QUESTIONS = [
 
 export default function UnifiedFloatingButton() {
     // Button visibility and animations
-    const [isVisible, setIsVisible] = useState(false);
+    // const [isVisible, setIsVisible] = useState(true);
     const [currentIcon, setCurrentIcon] = useState(0); // 0 = chat, 1 = resume
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
@@ -79,15 +79,15 @@ export default function UnifiedFloatingButton() {
     const inputRef = useRef<HTMLInputElement>(null);
 
     // Show button after scrolling
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollY = window.scrollY;
-            setIsVisible(scrollY > 300);
-        };
+    // useEffect(() => {
+    //     const handleScroll = () => {
+    //         const scrollY = window.scrollY;
+    //         setIsVisible(scrollY > 300);
+    //     };
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    //     window.addEventListener('scroll', handleScroll);
+    //     return () => window.removeEventListener('scroll', handleScroll);
+    // }, []);
 
     // Icon sliding animation
     useEffect(() => {
@@ -273,7 +273,7 @@ export default function UnifiedFloatingButton() {
         <>
             {/* Unified Floating Button */}
             <AnimatePresence>
-                {isVisible && !isChatOpen && (
+                {!isChatOpen && (
                     <motion.div
                         initial={{ opacity: 0, scale: 0, x: 100 }}
                         animate={{ opacity: 1, scale: 1, x: 0 }}
