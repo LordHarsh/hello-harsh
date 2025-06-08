@@ -204,7 +204,7 @@ export default function UnifiedFloatingButton() {
                         initial={{ opacity: 0, scale: 0, x: 100 }}
                         animate={{ opacity: 1, scale: 1, x: 0 }}
                         exit={{ opacity: 0, scale: 0, x: 100 }}
-                        className="fixed bottom-6 left-6 z-50"
+                        className="fixed bottom-6 right-6 z-50"
                     >
                         <motion.button
                             onClick={toggleChat}
@@ -292,29 +292,6 @@ export default function UnifiedFloatingButton() {
                                 ))}
                             </AnimatePresence>
                         </motion.button>
-
-                        {/* Floating label */}
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 1 }}
-                            className="absolute right-20 top-1/2 -translate-y-1/2 pointer-events-none"
-                        >
-                            <div className="bg-black/80 text-white text-sm px-3 py-2 rounded-lg whitespace-nowrap">
-                                <AnimatePresence mode="wait">
-                                    <motion.span
-                                        key={currentIcon}
-                                        initial={{ opacity: 0, y: 10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0, y: -10 }}
-                                        transition={{ duration: 0.3 }}
-                                    >
-                                        {currentIcon === 0 ? "Chat with AI" : "Download Resume"}
-                                    </motion.span>
-                                </AnimatePresence>
-                                <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1 w-2 h-2 bg-black/80 rotate-45" />
-                            </div>
-                        </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>
@@ -325,7 +302,7 @@ export default function UnifiedFloatingButton() {
                     initial={{ opacity: 0, scale: 0.8, x: -50 }}
                     animate={{ opacity: 1, scale: 1, x: 0 }}
                     exit={{ opacity: 0, scale: 0.8, x: -50 }}
-                    className={`fixed bottom-6 mx-4 sm:left-6 z-50 sm:w-[400px] lg:w-[450px] bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl transition-all duration-500 ${isMinimized ? 'h-16' : 'h-[90vh] max-h-[600px]'
+                    className={`fixed bottom-6 mx-4 sm:right-6 z-50 sm:w-[400px] lg:w-[450px] bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl transition-all duration-500 ${isMinimized ? 'h-16' : 'h-[90vh] max-h-[600px]'
                         } flex flex-col`}
                     style={{
                         animation: 'float 6s ease-in-out infinite 2s'
