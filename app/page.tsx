@@ -4,16 +4,16 @@ import ExperienceSection from "@/components/experience-section";
 import ProjectsSection from "@/components/projects-section";
 import AchievementsSection from "@/components/achievements-section";
 import ContactSection from "@/components/contact-section";
-import FloatingResumeButton from "@/components/floating-resume-button";
 import SkillsSection from "@/components/skills-section";
 import About from "@/components/about-section";
+import ChatBot from "@/components/chatbot";
 
 export default function Home() {
   return (
     <main className="relative">
       <Navigation />
-      <FloatingResumeButton />
-
+      {/* <FloatingResumeButton /> */}
+      <ChatBot />
       <section id="home">
         <HeroSection />
       </section>
@@ -42,6 +42,8 @@ export default function Home() {
       <section id="contact">
         <ContactSection />
       </section>
+
+
     </main>
   );
 }
